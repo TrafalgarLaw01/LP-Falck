@@ -1,21 +1,41 @@
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="h-full bg-[#00040a]">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- viewport-fit=cover handles the safe area for modern mobile browsers (notches) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- theme-color ensures the status bar color matches the app background -->
+    <meta name="theme-color" content="#00040a" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
     <title>Silvio Falck | Personal Trainer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
+      :root {
+        --safe-top: env(safe-area-inset-top);
+        --safe-bottom: env(safe-area-inset-bottom);
+      }
+      
+      html, body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        /* Strictly prevent horizontal scroll */
+        overflow-x: hidden;
+        position: relative;
+        background-color: #00040a;
+      }
+
       body {
         font-family: 'Inter', sans-serif;
-        background-color: #00040a;
         color: #fff;
-        overflow-x: hidden;
       }
+
       /* Enhanced blue/black gradient with more depth */
       .bg-main-gradient {
         background: 
@@ -44,13 +64,14 @@
         pointer-events: none;
         perspective: 1200px;
         z-index: 1;
+        overflow: hidden;
       }
       .grid-3d-pattern {
-        width: 200%;
-        height: 200%;
+        width: 200vw;
+        height: 200vh;
         position: absolute;
-        top: -50%;
-        left: -50%;
+        top: -50vh;
+        left: -50vw;
         background-image: 
           linear-gradient(rgba(0, 102, 255, 0.08) 1px, transparent 1px),
           linear-gradient(90deg, rgba(0, 102, 255, 0.08) 1px, transparent 1px);
@@ -68,6 +89,12 @@
       }
       header {
         transition: background 0.3s ease;
+        padding-top: max(1rem, var(--safe-top));
+      }
+      
+      /* Ensure no elements can break the container width */
+      * {
+        box-sizing: border-box;
       }
     </style>
   <script type="importmap">
@@ -82,9 +109,8 @@
 }
 </script>
 </head>
-  <body class="bg-main-gradient">
-    <div id="root"></div>
-    <!-- Script de entrada adicionado para garantir o carregamento do React -->
+  <body class="bg-main-gradient overflow-x-hidden">
+    <div id="root" class="overflow-x-hidden w-full"></div>
     <script type="module" src="index.tsx"></script>
   </body>
 </html>
