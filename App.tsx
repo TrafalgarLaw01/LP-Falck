@@ -200,7 +200,7 @@ const App: React.FC = () => {
           <SectionElements intensity={1} />
           <motion.div {...fadeInUp} className="max-w-3xl mx-auto text-center relative z-10">
             <h3 className="text-4xl font-black mb-8 italic tracking-tight leading-tight">Quer treinar presencial em Dourados ou Online?</h3>
-            <p className="text-2xl text-gray-400 mb-12 font-light">Vamos conversar agora e definir the melhor formato para a sua rotina.</p>
+            <p className="text-2xl text-gray-400 mb-12 font-light">Vamos conversar agora e definir o melhor formato para a sua rotina.</p>
             <a 
               href={LINKS.WHATSAPP}
               className="btn-gradient px-14 py-6 rounded-full font-black text-2xl flex items-center justify-center gap-4 mx-auto w-full md:w-max shadow-3xl hover:shadow-blue-600/50 transition-all active:scale-95"
@@ -217,10 +217,11 @@ const App: React.FC = () => {
           <div className="max-w-4xl mx-auto text-center relative z-10">
             <motion.div 
               {...fadeInUp}
-              className="glass-card p-16 md:p-24 rounded-[5rem] relative overflow-hidden border-blue-500/20"
+              className="glass-card p-12 md:p-24 rounded-[5rem] relative overflow-hidden border-blue-500/20"
             >
               <div className="absolute -top-20 -right-20 w-96 h-96 bg-blue-600/30 blur-[150px] pointer-events-none"></div>
-              <h2 className="text-6xl md:text-8xl font-black mb-12 leading-[1] tracking-tighter italic">O seu <span className="text-gradient">Próximo Nível</span> é aqui.</h2>
+              {/* Fixed: reduced mobile size to text-5xl and changed tracking-tighter to tracking-tight to prevent cutting off the 'l' in Nível */}
+              <h2 className="text-5xl md:text-8xl font-black mb-12 leading-[1.2] tracking-tight italic">O seu <span className="text-gradient">Próximo Nível</span> é aqui.</h2>
               <p className="text-2xl md:text-3xl text-gray-400 mb-16 font-light leading-relaxed">Seja no atendimento presencial ou na consultoria digital, você terá o melhor suporte técnico.</p>
               
               <a 
